@@ -1,0 +1,38 @@
+- name: netimgui
+  type: table
+  desc: Functions and constants for interacting with ImGUI APIs
+
+  members:
+
+  - name: connect_from_app
+    type: function
+
+    parameters:
+      - name: client_name
+        type: string
+
+#*****************************************************************************************************
+
+  - name: connect_to_app
+    type: function
+
+    parameters:
+      - name: client_name
+        type: string
+
+      - name: server_host
+        type: string
+
+#*****************************************************************************************************
+
+  - name: disconnect
+    type: function
+
+#*****************************************************************************************************
+
+  - name: is_connected
+    type: function
+
+    return:
+      - name: result
+        type: bool

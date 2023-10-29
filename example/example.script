@@ -1,0 +1,17 @@
+
+function init(self)
+	local scale = 2
+	imgui.scale_all_sizes(scale)
+end
+
+function update(self, dt)
+	local connected = netimgui.is_connected()
+	
+	imgui.text("Connected? :" .. tostring(connected))
+	
+	if not connected and imgui.button("Connect") then
+		netimgui.connect_to_app("Defold", "localhost")
+	elseif connected and imgui.button("Disconnect") then
+		netimgui.disconnect()
+	end
+end

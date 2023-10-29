@@ -1,0 +1,29 @@
+[bootstrap]
+main_collection = /example/example.collectionc
+render = /builtins/render/default.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 960
+height = 640
+
+[project]
+title = NetImGui
+dependencies#0 = https://github.com/britzl/extension-imgui/archive/refs/heads/master.zip
+
+[library]
+include_dirs = imgui
+
+[input]
+game_binding = /netimgui/bindings/netimgui.input_bindingc
+use_accelerometer = 0
+
+[ios]
+bundle_identifier = com.defold.netimgui
+bundle_name = NetImgui
+
+[android]
+package = com.defold.netimgui
+
