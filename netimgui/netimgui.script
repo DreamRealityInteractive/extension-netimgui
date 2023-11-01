@@ -121,6 +121,6 @@ function on_input(self, action_id, action)
 		self.mouse.x = action.screen_x
 		self.mouse.y = action.screen_y
 	end
-
-	return imgui.want_mouse_input()
+	
+	return not netimgui.is_connected() and imgui.want_mouse_input()
 end
