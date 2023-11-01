@@ -1,17 +1,53 @@
-
 function init(self)
 	local scale = 2
 	imgui.scale_all_sizes(scale)
+	imgui.set_global_font_scale(scale)
+
+	self.server_host = "localhost"
+	self.white_screen = false
 end
 
 function update(self, dt)
+	imgui.begin_window("Example", true, imgui.WINDOWFLAGS_ALWAYSAUTORESIZE)
+	
 	local connected = netimgui.is_connected()
-	
-	imgui.text("Connected? :" .. tostring(connected))
-	
-	if not connected and imgui.button("Connect") then
-		netimgui.connect_to_app("Defold", "localhost")
-	elseif connected and imgui.button("Disconnect") then
+	if connected and imgui.button("Disconnect") then
 		netimgui.disconnect()
+	elseif not connected then
+		imgui.text("Not connected")
 	end
+
+	if connected then
+		-- trivial example to prove that the connection works
+		imgui.separator()
+		imgui.text("Simple demo")
+		local changed, val = imgui.checkbox("White screen", self.white_screen)
+		if changed then
+			self.white_screen = val
+			if val then
+				msg.post("@render:", "clear_color", { color = vmath.vector4(1, 1, 1, 0) } )
+			else
+				msg.post("@render:", "clear_color", { color = vmath.vector4(0, 0, 0, 0) } )
+			end
+		end
+	end
+	
+	if not connected then
+		imgui.separator()
+		
+		local changed, host = imgui.input_text("Server host", self.server_host)
+		if changed then self.server_host = host end
+		
+		if imgui.button("Connect to server") then
+			netimgui.connect_to_app("Defold",  self.server_host)
+		end
+
+		imgui.separator()
+
+		if imgui.button("Allow incoming connections") then
+			netimgui.connect_from_app("Defold")
+		end
+	end
+
+	imgui.end_window()
 end

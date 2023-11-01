@@ -11,7 +11,7 @@ height = 640
 
 [project]
 title = NetImGui
-dependencies#0 = https://github.com/britzl/extension-imgui/archive/refs/heads/master.zip
+dependencies#0 = https://github.com/DreamRealityInteractive/extension-imgui/archive/refs/heads/disable_rendering.zip
 
 [library]
 include_dirs = imgui
