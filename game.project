@@ -14,7 +14,7 @@ title = NetImGui
 dependencies#0 = https://github.com/DreamRealityInteractive/extension-imgui/archive/refs/heads/disable_rendering.zip
 
 [library]
-include_dirs = imgui
+include_dirs = netimgui
 
 [input]
 game_binding = /netimgui/bindings/netimgui.input_bindingc
