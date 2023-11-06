@@ -54,7 +54,8 @@ static const luaL_reg Module_methods[] =
     {"connect_from_app", netimgui_ConnectFromApp},
     {"connect_to_app", netimgui_ConnectToApp},
     {"disconnect", netimgui_Disconnect},
-    {"is_connected", netimgui_IsConnected}
+    {"is_connected", netimgui_IsConnected},
+    {0, 0}
 };
 
 
