@@ -24,7 +24,6 @@ static int netimgui_ConnectToApp(lua_State *L)
 static int netimgui_ConnectFromApp(lua_State *L)
 {
     DM_LUA_STACK_CHECK(L, 0);
-    //imgui_NewFrame();
     const char* client_name = luaL_checkstring(L, 1);
     NetImgui::ConnectFromApp(client_name);
     return 0;
@@ -33,8 +32,14 @@ static int netimgui_ConnectFromApp(lua_State *L)
 static int netimgui_Disconnect(lua_State *L)
 {
     DM_LUA_STACK_CHECK(L, 0);
-    //imgui_NewFrame();
     NetImgui::Disconnect();
+    return 0;
+}
+
+static int netimgui_Shutdown(lua_State *L)
+{
+    DM_LUA_STACK_CHECK(L, 0);
+    NetImgui::Shutdown();
     return 0;
 }
 
@@ -55,6 +60,7 @@ static const luaL_reg Module_methods[] =
     {"connect_to_app", netimgui_ConnectToApp},
     {"disconnect", netimgui_Disconnect},
     {"is_connected", netimgui_IsConnected},
+    {"shutdown", netimgui_Shutdown},
     {0, 0}
 };
 
@@ -91,7 +97,9 @@ dmExtension::Result AppFinalizeDefoldNetImGui(dmExtension::AppParams* params)
 dmExtension::Result FinalizeDefoldNetImGui(dmExtension::Params* params)
 {
     dmLogInfo("FinalizeDefoldNetImGui");
-    NetImgui::Shutdown();
+    // Shutdown is now triggered from netimgui.script, to avoid a crash 
+    // from a presumed race condition with imgui shutdown
+    //NetImgui::Shutdown();
     return dmExtension::RESULT_OK;
 }
 

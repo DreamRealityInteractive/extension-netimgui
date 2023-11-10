@@ -26,6 +26,8 @@ function init(self)
 end
 
 function final(self)
+	netimgui.shutdown()
+
 	if self.acquire_input_focus then
 		msg.post(".", "release_input_focus")
 	end
