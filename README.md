@@ -10,7 +10,7 @@ This extension works alongside [extension-imgui](https://github.com/britzl/exten
 3. Adding netimgui/netimgui.script will handle input, and also disables local imgui rendering when a Server is connected.
 
 ## Server application
-To connect to your Defold application running this extension, you'll need the NetImgui server application. The NetImgui distribution includes instructions for building on Windows, but the code is quite portable and can be built for MacOS.
+To connect to your Defold application running this extension, you'll need the NetImgui server application. The NetImgui distribution includes instructions for building on Windows and Mac with Sharpmake, but the code is quite portable and can be built for Linux.
 
 There are two options for establishing the connection, and [example/example.script](/example/example.script) covers both:
 1. Connect from your Defold app to the server app by calling netimgui.connect_to_app() and specifying a host name or IP address.
