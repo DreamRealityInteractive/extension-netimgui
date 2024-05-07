@@ -11,7 +11,7 @@ height = 640
 
 [project]
 title = NetImGui
-dependencies#0 = https://github.com/DreamRealityInteractive/extension-imgui/archive/refs/heads/disable_rendering.zip
+dependencies#0 = https://github.com/DreamRealityInteractive/extension-imgui/archive/refs/heads/imgui-1.90.5.zip
 
 [library]
 include_dirs = netimgui
@@ -22,7 +22,7 @@ use_accelerometer = 0
 
 [ios]
 bundle_identifier = com.defold.netimgui
-bundle_name = NetImgui
+bundle_name = extension-netimgui
 
 [android]
 package = com.defold.netimgui
